@@ -12,17 +12,28 @@
 #ifndef MAINWINDOW_H
 #define	MAINWINDOW_H
 #include <QtGui/QApplication>
+#include <QMainWindow>
 #include <QLineEdit>
 #include <QTextEdit>
+#include <QMenu>
+#include <QLabel>
+#include <QMenuBar>
+#include <QStatusBar>
+#include <QGridLayout>
+#include <QApplication>
+#include <QAction>
 
-class MainWindow : public QWidget{
+class MainWindow : public QMainWindow{
+    Q_OBJECT
+    private:
+        QLabel *SearchDevicesLabel;
+        QAction *SearchDevicesAction;
 public:
     MainWindow(QWidget *parent = 0);
-    MainWindow(const MainWindow& orig);
     virtual ~MainWindow();
-private:
-     QLineEdit *nameLine;
-     QTextEdit *addressText;
+    
+    public Q_SLOTS:
+            void find();
 
 };
 
