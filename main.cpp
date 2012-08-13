@@ -9,7 +9,7 @@
 #include <QDesktopWidget>
 #include <QApplication>
 #include "MainWindow.h"
-
+//kurwa
 void center(QWidget &widget){
     int x, y;
     int screenWidth, screenHeight, width, height;
