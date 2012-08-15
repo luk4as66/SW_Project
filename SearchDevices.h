@@ -1,0 +1,39 @@
+/* 
+ * File:   SearchDevices.h
+ * Author: pablo
+ *
+ * Created on 15 sierpień 2012, 12:41
+ */
+
+#ifndef SEARCHDEVICES_H
+#define	SEARCHDEVICES_H
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <sys/socket.h>
+#include <bluetooth/bluetooth.h>
+#include <bluetooth/hci.h>
+#include <bluetooth/hci_lib.h>
+
+
+class bluetooth
+{
+private:
+    inquiry_info *ii;
+    char *adress;
+    char *name;
+    int dev_id, sock;
+    int lenght  = 8;
+    int max_rsp = 255;
+    int num_rsp;
+    int flags;
+    int i;
+public:
+    bluetooth();
+    ~bluetooth();
+    void discover();
+};
+
+#endif	/* SEARCHDEVICES_H */
+
