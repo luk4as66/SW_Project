@@ -12,9 +12,9 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <sys/socket.h>
-#include <bluetooth/bluetooth.h>
-#include <bluetooth/hci.h>
-#include <bluetooth/hci_lib.h>
+#include </usr/include/bluetooth/bluetooth.h>
+#include </usr/include/bluetooth/hci.h>
+#include </usr/include/bluetooth/hci_lib.h>
 
 
 class bluetooth
@@ -24,8 +24,8 @@ private:
     char *adress;
     char *name;
     int dev_id, sock;
-    int lenght  = 8;
-    int max_rsp = 255;
+    int lenght;
+    int max_rsp;
     int num_rsp;
     int flags;
     int i;
