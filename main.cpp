@@ -9,6 +9,7 @@
 #include <QDesktopWidget>
 #include <QApplication>
 #include "MainWindow.h"
+#include "SearchDevices.h"
 //kurwa
 void center(QWidget &widget){
     int x, y;
@@ -41,9 +42,14 @@ int main(int argc, char *argv[]) {
     
     
     MainWindow main;
+    bluetooth device;
     main.setWindowTitle("SW PROJECT");
     main.show();
     center(main);
+    
+    device.discover();
+    
+    
     
     return app.exec();
 }
