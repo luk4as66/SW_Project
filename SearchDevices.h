@@ -4,7 +4,7 @@
  *
  * Created on 15 sierpień 2012, 12:41
  */
-
+//juz dziala!
 #ifndef SEARCHDEVICES_H
 #define	SEARCHDEVICES_H
 
@@ -12,9 +12,9 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <sys/socket.h>
-#include </usr/include/bluetooth/bluetooth.h>
-#include </usr/include/bluetooth/hci.h>
-#include </usr/include/bluetooth/hci_lib.h>
+#include <bluetooth/bluetooth.h>
+#include <bluetooth/hci.h>
+#include <bluetooth/hci_lib.h>
 
 
 class bluetooth
