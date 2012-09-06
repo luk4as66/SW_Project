@@ -11,11 +11,13 @@
 #include <fstream>
 #include<iostream>
 #include<stdio.h>
+ #include <QTextCodec>
 
 using namespace std;
 
 
 MainWindow::MainWindow(QWidget *parent):QMainWindow(parent) {
+   
     /*
     QAction *quit = new QAction("&Find Devices...", this);
     QMenu *file;
@@ -56,14 +58,26 @@ void MainWindow:: find(){
 
 void MainWindow :: discovered()
 {
-    //this->searchWindow = new QDialog();
-    //connect(searchWindow,SIGNAL(triggered()), this, SLOT(searched()));
-    //searchWindow->show();
+    
+    fstream plik;
+    plik.open( "dane.txt", std::ios::in | std::ios::out );
+    
+    if( plik.good() == true )
+    {
+    cout << "Uzyskano dostep do pliku!" << std::endl;
+    
+    } else cout << "Dostep do pliku zostal zabroniony!" << std::endl;
+    
+    char bufor[ 1024 ];
+    plik.read( bufor, 1024 );
     
     QTextEdit *discovered;
     discovered = new QTextEdit();
     
     discovered->showNormal();
+    string *tempText = new string();
+    discovered->setText(trUtf8(bufor));
+    
     
 }
 MainWindow::~MainWindow() {
