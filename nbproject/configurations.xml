@@ -5,6 +5,8 @@
                    displayName="Header Files"
                    projectFiles="true">
       <itemPath>MainWindow.h</itemPath>
+      <itemPath>SearchDevices.h</itemPath>
+      <itemPath>connectPanelClass.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -14,6 +16,8 @@
                    displayName="Source Files"
                    projectFiles="true">
       <itemPath>MainWindow.cpp</itemPath>
+      <itemPath>SearchDevices.cpp</itemPath>
+      <itemPath>connectPanelClass.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -44,7 +48,7 @@
     <conf name="Release" type="4">
       <toolsSet>
         <remote-sources-mode>LOCAL_SOURCES</remote-sources-mode>
-        <compilerSet>default</compilerSet>
+        <compilerSet>GNU|GNU</compilerSet>
       </toolsSet>
       <qt>
         <buildMode>1</buildMode>
@@ -56,6 +60,9 @@
         </cTool>
         <ccTool>
           <developmentMode>5</developmentMode>
+          <incDir>
+            <pElem>/usr/include/bluetooth</pElem>
+          </incDir>
         </ccTool>
         <fortranCompilerTool>
           <developmentMode>5</developmentMode>
@@ -63,7 +70,47 @@
         <asmTool>
           <developmentMode>5</developmentMode>
         </asmTool>
+        <linkerTool>
+          <linkerLibItems>
+            <linkerOptionItem>`pkg-config --libs bluez`</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
       </compileType>
+      <packaging>
+        <packType>Tar</packType>
+        <additionalOptions> -lbluetooth</additionalOptions>
+        <packFileList>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}"
+                            from="${OUTPUT_PATH}"
+                            perm="755"
+                            owner="root"
+                            group="bin"/>
+        </packFileList>
+      </packaging>
+    </conf>
+    <conf name="NewConfiguration" type="4">
+      <toolsSet>
+        <remote-sources-mode>LOCAL_SOURCES</remote-sources-mode>
+        <compilerSet>default</compilerSet>
+      </toolsSet>
+      <qt>
+        <modules>core gui</modules>
+      </qt>
+      <compileType>
+      </compileType>
+      <packaging>
+        <packType>Tar</packType>
+        <additionalOptions>-v -lbluetooth</additionalOptions>
+        <packFileList>
+          <packFileListElem type="File"
+                            to="${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}"
+                            from="${OUTPUT_PATH}"
+                            perm="755"
+                            owner="root"
+                            group="bin"/>
+        </packFileList>
+      </packaging>
     </conf>
   </confs>
 </configurationDescriptor>

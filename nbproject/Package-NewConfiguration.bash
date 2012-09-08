@@ -7,7 +7,7 @@
 # Macros
 TOP=`pwd`
 CND_PLATFORM=GNU-Linux-x86
-CND_CONF=Release
+CND_CONF=NewConfiguration
 CND_DISTDIR=dist
 CND_BUILDDIR=build
 NBTMPDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}/tmp-packaging
@@ -67,7 +67,7 @@ copyFileToTmpDir "${OUTPUT_PATH}" "${NBTMPDIR}/${PACKAGE_TOP_DIR}bin/${OUTPUT_BA
 cd "${TOP}"
 rm -f ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/package/SWProject.tar
 cd ${NBTMPDIR}
-tar - -lbluetoothcf ../../../../${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/package/SWProject.tar *
+tar -v -lbluetoothcf ../../../../${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/package/SWProject.tar *
 checkReturnCode
 
 # Cleanup

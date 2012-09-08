@@ -12,15 +12,15 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <sys/socket.h>
-#include <bluetooth/bluetooth.h>
-#include <bluetooth/hci.h>
-#include <bluetooth/hci_lib.h>
+//#include <bluetooth/bluetooth.h>
+//#include <bluetooth/hci.h>
+//#include <bluetooth/hci_lib.h>
 
-
+/*
 class bluetooth
 {
 private:
-    inquiry_info *ii;
+ //   inquiry_info *ii;
     char *adress;
     char *name;
     int dev_id, sock;
@@ -34,6 +34,6 @@ public:
     ~bluetooth();
     void discover();
 };
-
+*/
 #endif	/* SEARCHDEVICES_H */
 

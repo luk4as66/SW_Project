@@ -9,7 +9,8 @@
 #include <QDesktopWidget>
 #include <QApplication>
 #include "MainWindow.h"
-#include "SearchDevices.h"
+//#include "SearchDevices.h"
+ #include <QTextCodec>
 //kurwa
 void center(QWidget &widget){
     int x, y;
@@ -37,17 +38,19 @@ void center(QWidget &widget){
 int main(int argc, char *argv[]) {
 
     QApplication app(argc, argv);
+    QTextCodec::setCodecForCStrings(QTextCodec::codecForName("Windows-1250"));
+    
     
     
     
     
     MainWindow main;
-    bluetooth device;
+    
     main.setWindowTitle("SW PROJECT");
     main.show();
     center(main);
     
-    device.discover();
+    
     
     
     

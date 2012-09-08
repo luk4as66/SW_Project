@@ -22,18 +22,44 @@
 #include <QGridLayout>
 #include <QApplication>
 #include <QAction>
+#include <QPushButton>
+#include <cstring>
+#include "connectPanelClass.h"
+#include "SearchDevices.h"
+
+using namespace std;
 
 class MainWindow : public QMainWindow{
     Q_OBJECT
     private:
-        QLabel *SearchDevicesLabel;
+        
+        string logText;
         QAction *SearchDevicesAction;
+        QAction *Exit;
+        QAction *ViewDevices;
+        QAction *Connect;
+        QDialog *searchWindow;
+        connectPanelClass *connectPanel;
+        QMenu *fileMenu;
+        QPushButton *widgetMenuSearchDevices;
+        QPushButton *widgetMenuViewDevices;
+        QPushButton *widgetMenuExit;
+         QPushButton *widgetMenuConnect;
+        QTextEdit *showDevices;
+        QLabel *logLabel;
+        QLabel *temperatureLabel;
+        QLabel *tempDeegreLabel;
+        QLabel *moveAreaLabel;
+        
 public:
+    
     MainWindow(QWidget *parent = 0);
     virtual ~MainWindow();
     
-    public Q_SLOTS:
+    private slots:
             void find();
+            void discovered();
+            void connectToDevice();
 
 };
 

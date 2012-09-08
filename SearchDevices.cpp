@@ -1,11 +1,20 @@
-#include "SearchDevices.h"
+//#include "SearchDevices.h"
+#include <fstream>
+#include<stdio.h>
+#include<iostream>
+
+using namespace std;
 
 
-bluetooth::bluetooth()
+
+
+
+
+/*bluetooth::bluetooth()
 {
-    this->ii=NULL;
+  this->ii=NULL;
     this->i=0;
-    this->lenght = 8;
+    this->lenght = 10;
     this->max_rsp = 255;
     
     this->adress=new char[19];
@@ -26,6 +35,8 @@ bluetooth::bluetooth()
 
 void bluetooth::discover()
 {
+    ofstream wpisz;
+    wpisz.open("dane.txt");
     this->flags = IREQ_CACHE_FLUSH;
     ii = (inquiry_info*)malloc(max_rsp * sizeof(inquiry_info));
     
@@ -38,8 +49,17 @@ void bluetooth::discover()
         if (hci_read_remote_name(sock, &(ii+i)->bdaddr, sizeof(name), 
             name, 0) < 0)
         strcpy(name, "[nieznany]");
-        printf("%s  %s\n", adress, name);
+        wpisz<<"Nazwa urządzenia:";
+        wpisz<<endl;
+        wpisz<<name;
+        wpisz<<endl;
+        wpisz<<"Adres urządzenia";
+        wpisz<<adress;
+        //printf("%s  %s\n", adress, name);
+        
     }
+    wpisz.close();
+    
     
 }
 
@@ -49,3 +69,4 @@ bluetooth::~bluetooth()
     close( sock );
    
 }
+*/

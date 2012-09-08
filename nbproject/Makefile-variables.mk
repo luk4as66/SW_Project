@@ -22,6 +22,14 @@ CND_ARTIFACT_PATH_Release=dist/Release/GNU-Linux-x86/SW_Project
 CND_PACKAGE_DIR_Release=dist/Release/GNU-Linux-x86/package
 CND_PACKAGE_NAME_Release=SWProject.tar
 CND_PACKAGE_PATH_Release=dist/Release/GNU-Linux-x86/package/SWProject.tar
+# NewConfiguration configuration
+CND_PLATFORM_NewConfiguration=GNU-Linux-x86
+CND_ARTIFACT_DIR_NewConfiguration=dist/NewConfiguration/GNU-Linux-x86
+CND_ARTIFACT_NAME_NewConfiguration=SW_Project
+CND_ARTIFACT_PATH_NewConfiguration=dist/NewConfiguration/GNU-Linux-x86/SW_Project
+CND_PACKAGE_DIR_NewConfiguration=dist/NewConfiguration/GNU-Linux-x86/package
+CND_PACKAGE_NAME_NewConfiguration=SWProject.tar
+CND_PACKAGE_PATH_NewConfiguration=dist/NewConfiguration/GNU-Linux-x86/package/SWProject.tar
 #
 # include compiler specific variables
 #
