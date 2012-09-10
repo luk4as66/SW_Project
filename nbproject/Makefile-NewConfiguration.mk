@@ -15,14 +15,15 @@ NM=nm
 CCADMIN=CCadmin
 RANLIB=ranlib
 CC=gcc
-CCC=gcc
-CXX=gcc
+CCC=g++
+CXX=g++
 FC=gfortran
 AS=as
 QMAKE=qmake
 
 # Macros
 CND_PLATFORM=GNU-Linux-x86
+CND_DLIB_EXT=so
 CND_CONF=NewConfiguration
 CND_DISTDIR=dist
 CND_BUILDDIR=build
