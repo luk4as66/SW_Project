@@ -1,7 +1,10 @@
-//#include "SearchDevices.h"
 #include <fstream>
 #include<stdio.h>
 #include<iostream>
+#include <string>
+#include "SearchDevices.h"
+
+
 
 using namespace std;
 
@@ -10,9 +13,9 @@ using namespace std;
 
 
 
-/*bluetooth::bluetooth()
+bluetooth::bluetooth()
 {
-  this->ii=NULL;
+    this->ii=NULL;
     this->i=0;
     this->lenght = 10;
     this->max_rsp = 255;
@@ -30,6 +33,10 @@ using namespace std;
         perror("BLADKURw");
         exit(1);
     }
+    arrayOfDevices = new char *[20];
+    if(arrayOfDevices==NULL) cout<<"blad alokacji pamieci"<<endl;
+    for(int i=0;i<20;i++) arrayOfDevices[i] = new char[20];
+    
     
 }
 
@@ -55,11 +62,24 @@ void bluetooth::discover()
         wpisz<<endl;
         wpisz<<"Adres urządzenia";
         wpisz<<adress;
-        //printf("%s  %s\n", adress, name);
-        
+        arrayOfDevices[i][0]=i;
+        for(int j=0;j<(sizeof(adress) / sizeof(char));j++)
+        {
+        arrayOfDevices[i][j+1]=i;
+        }
+        for(int a=0;a<20;a++) 
+        {
+         printf("%s", arrayOfDevices[a]);
+         printf("\n");
+        }
     }
     wpisz.close();
     
+    
+}
+
+int bluetooth::returnIndexOfArray()
+{
     
 }
 
@@ -67,6 +87,8 @@ bluetooth::~bluetooth()
 {
     free( ii );
     close( sock );
+    for (int x = 0; x < 20; x++)
+    delete [] arrayOfDevices[x];
+    delete [] arrayOfDevices;
    
 }
-*/
