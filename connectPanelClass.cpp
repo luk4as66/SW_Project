@@ -75,11 +75,13 @@ void connectPanelClass :: connectWithDevice()
         sleep(4);
         //status = write(s, "aaaaaa", 6);
         status = read(s, buff, 10 );
+        
         sleep(4);
-        
-        
         printf("status=%d", status);
         printf("bufor=%s", buff);
+        
+        
+        
     }
     
     if( status < 0 ) perror("uh oh");
