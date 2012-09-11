@@ -26,6 +26,12 @@
 #include <cstring>
 #include "connectPanelClass.h"
 #include "SearchDevices.h"
+#include <linux/input.h>
+#include <fcntl.h>
+#include <X11/Xlib.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
 
 using namespace std;
 
@@ -45,7 +51,7 @@ class MainWindow : public QMainWindow{
         QPushButton *widgetMenuSearchDevices;
         QPushButton *widgetMenuViewDevices;
         QPushButton *widgetMenuExit;
-         QPushButton *widgetMenuConnect;
+        QPushButton *widgetMenuConnect;
         QTextEdit *showDevices;
         QLabel *logLabel;
         QLabel *temperatureLabel;
@@ -57,6 +63,7 @@ class MainWindow : public QMainWindow{
 public:
     
     MainWindow(QWidget *parent = 0);
+    bool eventFilter(QObject *obj, QEvent *event);
     virtual ~MainWindow();
     
     private slots:
