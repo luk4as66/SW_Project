@@ -23,6 +23,7 @@ using namespace std;
 MainWindow::MainWindow(QWidget *parent):QMainWindow(parent) {
 
     
+   
     int btnWidth = 150;
     int btnHeight = 40;
     QFont font;
@@ -87,9 +88,9 @@ MainWindow::MainWindow(QWidget *parent):QMainWindow(parent) {
     fileMenu->addAction(ViewDevices);
     
     
-    
-    
-    
+    fakeList = new string[search.sizeOfArrayNames()];
+    temp = new string [search.sizeOfArrayNames()];
+    temp2 = new string [search.sizeOfArrayNames()];
     
     
     
@@ -109,45 +110,63 @@ void MainWindow:: find(){
 void MainWindow :: discovered()
 {
     
-    fstream plik;
-    plik.open( "dane.txt", std::ios::in | std::ios::out );
     
-    if( plik.good() == true )
+    
+    
+    if(search.sizeOfArrayNames()==0)
     {
-    cout << "Uzyskano dostep do pliku!" << std::endl;
+      logText+"brak urzadzen";
+    }
+    else
+    {
+    temp = search.returnArrayOfNames();
+    temp2 = search.returnAdressOfDevices();
+    for(int i=0;i<search.sizeOfArrayNames();i++)
+    {
+        fakeList = new string[search.sizeOfArrayNames()];
+        logText+="nazwa urzadzenia: ";
+        logText+= temp2[i];
+        logText+= '\n';
+        logText+="adres: ";
+        logText+= temp[i];
+        logText+= '\n';
+        
+    }}
     
-    } else cout << "Dostep do pliku zostal zabroniony!" << std::endl;
+   
     
-    char bufor[ 1024 ];
-    plik.read( bufor, 1024 );
     
-    logText+= bufor;
-    logText+='\n';
     
-    //string *tempText = new string();
+    
     showDevices->setText(trUtf8(logText.c_str()));
-    plik.close();
+   
     
     
 }
 void MainWindow :: connectToDevice(){
-    //TODO logic
-    //wylistowac dostepne urzadzenia
-    string fakeList[search.sizeOfArrayNames()];
-    for(int i=0;i<search.sizeOfArrayNames();i++)
-    {
-        fakeList[i] = search.returnArrayOfNames(i);
-    }
-    connectPanel = new connectPanelClass(fakeList,this);
-    connectPanel -> resize(300,200);
-    
-    connectPanel -> show();
-    logText += "glupi text";
-    logText+="\n";
+   
+        if(search.sizeOfArrayNames()==0)
+        {
+            logText+"brak urzadzen";
+        }
+        else
+        {
+            
+         fakeList = search.returnArrayOfNames();
+         connectPanel = new connectPanelClass(fakeList,this);
+         connectPanel -> resize(300,200);
+         connectPanel -> show();
+        }
+    logText+='\n';
     showDevices->setText(logText.c_str());
     
     
 }
 MainWindow::~MainWindow() {
+    delete [] temp;
+    delete [] temp2;
+    delete [] fakeList;
+    
+        
 }
 

@@ -26,22 +26,22 @@ class bluetooth
 {
 private:
     inquiry_info *ii;
-    char *adress;
-    char *name;
+    char adress[20];
+    char name[20];
     int dev_id, sock;
     int lenght;
     int max_rsp;
     int num_rsp;
     int flags;
     int i;
-    char  **arrayOfDevices;
-    char  **nameOfDevices;
+    string arrayOfDevices[20];
+    string nameOfDevices[20];
 public:
     bluetooth();
     ~bluetooth();
-    char  *returnArrayOfNames(int i);
+    string * returnArrayOfNames();
     int sizeOfArrayNames();
-    char *returnAdressOfDevices(int i);
+    string * returnAdressOfDevices();
     void discover();
     
     

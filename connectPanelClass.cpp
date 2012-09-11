@@ -54,7 +54,7 @@ void connectPanelClass :: connectWithDevice()
     struct sockaddr_rc addr = { 0 };
     int s, status;
     char dest[18] = "00:12:6F:25:06:10";
-    
+    char buff[10] = "baaaaaa"; 
 
     // allocate a socket
     s = socket(AF_BLUETOOTH, SOCK_STREAM, BTPROTO_RFCOMM);
@@ -70,15 +70,16 @@ void connectPanelClass :: connectWithDevice()
     // send a message
     if( status == 0 ) {
         
-        printf("działa!");
+        printf("good");
         sleep(4);
-        status = write(s, "aaaaa", 5);
+        status = write(s, "bbbbb", 5);
         sleep(4);
     }
 
-    if( status < 0 ) perror("Lepa");
+    if( status < 0 ) perror("uh oh");
 
     ::close(s);
+    
     
 }
 connectPanelClass::~connectPanelClass() {

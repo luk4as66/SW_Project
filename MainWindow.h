@@ -51,6 +51,9 @@ class MainWindow : public QMainWindow{
         QLabel *temperatureLabel;
         QLabel *tempDeegreLabel;
         QLabel *moveAreaLabel;
+        string *temp, *temp2;
+        string *fakeList;
+        
         
 public:
     
