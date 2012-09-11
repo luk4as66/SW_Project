@@ -6,6 +6,7 @@
 
 
 
+
 using namespace std;
 
 
@@ -20,11 +21,11 @@ bluetooth::bluetooth()
     this->lenght = 10;
     this->max_rsp = 255;
     
-    this->adress=new char[19];
-    this->name=new char[40];
+    this->adress=new char[17];
+    this->name=new char[20];
     
     memset (this->adress,0,19);
-    memset (this->name,0,40);
+    memset (this->name,0,20);
     
     this->dev_id = hci_get_route(NULL);
     this->sock = hci_open_dev( dev_id );
@@ -34,8 +35,15 @@ bluetooth::bluetooth()
         exit(1);
     }
     arrayOfDevices = new char *[20];
+    nameOfDevices = new char *[20];
     if(arrayOfDevices==NULL) cout<<"blad alokacji pamieci"<<endl;
-    for(int i=0;i<20;i++) arrayOfDevices[i] = new char[20];
+    for(int i=0;i<20;i++){
+        arrayOfDevices[i] = new char[20];
+        nameOfDevices[i] = new char[20];
+    } 
+    
+            
+        
     
     
 }
@@ -56,39 +64,58 @@ void bluetooth::discover()
         if (hci_read_remote_name(sock, &(ii+i)->bdaddr, sizeof(name), 
             name, 0) < 0)
         strcpy(name, "[nieznany]");
+        wpisz<<endl;
         wpisz<<"Nazwa urządzenia:";
         wpisz<<endl;
         wpisz<<name;
         wpisz<<endl;
         wpisz<<"Adres urządzenia";
         wpisz<<adress;
-        arrayOfDevices[i][0]=i;
-        for(int j=0;j<(sizeof(adress) / sizeof(char));j++)
-        {
-        arrayOfDevices[i][j+1]=i;
-        }
-        for(int a=0;a<20;a++) 
-        {
-         printf("%s", arrayOfDevices[a]);
-         printf("\n");
-        }
+        
+        
+        strcpy(arrayOfDevices[i],adress);
+        strcpy(nameOfDevices[i],name);
+        
+        
+        cout<<arrayOfDevices[i]<<endl;
+        cout<<nameOfDevices[i]<<endl;
+        
+        
+        
+        
     }
     wpisz.close();
     
     
 }
 
-int bluetooth::returnIndexOfArray()
+char  *bluetooth::returnArrayOfNames(int i)
 {
-    
+    return nameOfDevices[i];
 }
+
+ int bluetooth :: sizeOfArrayNames()
+ {
+     return num_rsp;
+ }
+ 
+ char *bluetooth :: returnAdressOfDevices(int i)
+ {
+     return arrayOfDevices[i];
+ }
+
+
 
 bluetooth::~bluetooth()
 {
     free( ii );
     close( sock );
     for (int x = 0; x < 20; x++)
+    {
     delete [] arrayOfDevices[x];
+    delete [] nameOfDevices[x];
+    }
     delete [] arrayOfDevices;
+    delete [] nameOfDevices;
    
 }

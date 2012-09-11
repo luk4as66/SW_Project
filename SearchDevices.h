@@ -35,11 +35,16 @@ private:
     int flags;
     int i;
     char  **arrayOfDevices;
+    char  **nameOfDevices;
 public:
     bluetooth();
     ~bluetooth();
-    int  returnIndexOfArray();
+    char  *returnArrayOfNames(int i);
+    int sizeOfArrayNames();
+    char *returnAdressOfDevices(int i);
     void discover();
+    
+    
 };
 
 #endif	/* SEARCHDEVICES_H */

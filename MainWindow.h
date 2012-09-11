@@ -32,6 +32,7 @@ using namespace std;
 class MainWindow : public QMainWindow{
     Q_OBJECT
     private:
+        bluetooth search;
         
         string logText;
         QAction *SearchDevicesAction;

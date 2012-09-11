@@ -1,3 +1,10 @@
+
 Nazwa urządzenia:
-Dell
-Adres urządzeniaC4:46:19:F9:02:CF
+Seri
+Adres urządzenia00:12:6F:25:06:10
+Nazwa urządzenia:
+Ania
+Adres urządzenia00:21:08:DC:DE:DB
+Nazwa urządzenia:
+Luka
+Adres urządzeniaE0:A6:70:4D:74:B4

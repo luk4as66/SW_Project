@@ -7,6 +7,7 @@
 
 #include "MainWindow.h"
 #include "SearchDevices.h"
+#include "connectPanelClass.h"
 #include <QDialog>
 #include <QTextEdit>
 #include <QFont>
@@ -98,9 +99,10 @@ MainWindow::MainWindow(QWidget *parent):QMainWindow(parent) {
    
 void MainWindow:: find(){
  
- bluetooth search;
+ 
  search.discover();
  statusBar()->showMessage("Searching for devices...");
+ 
  
 }
 
@@ -120,17 +122,22 @@ void MainWindow :: discovered()
     plik.read( bufor, 1024 );
     
     logText+= bufor;
-    logText+="\n";
+    logText+='\n';
     
     //string *tempText = new string();
     showDevices->setText(trUtf8(logText.c_str()));
+    plik.close();
     
     
 }
 void MainWindow :: connectToDevice(){
     //TODO logic
     //wylistowac dostepne urzadzenia
-    string fakeList[4]={"device1","device2","device3","device4"};
+    string fakeList[search.sizeOfArrayNames()];
+    for(int i=0;i<search.sizeOfArrayNames();i++)
+    {
+        fakeList[i] = search.returnArrayOfNames(i);
+    }
     connectPanel = new connectPanelClass(fakeList,this);
     connectPanel -> resize(300,200);
     
