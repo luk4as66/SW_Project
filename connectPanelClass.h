@@ -20,15 +20,19 @@
 #include <signal.h>
 #include <bluetooth/hci.h>
 #include <bluetooth/hci_lib.h>
+#include <QtCore>
+#include <QThread>
+#include <QTime>
 
 
 using namespace std;
 
-class connectPanelClass: public QDialog{
+class connectPanelClass: public QDialog,   public QThread{
     Q_OBJECT
 public:
     connectPanelClass(string *list,QWidget *parent=0);
     virtual ~connectPanelClass();
+    void run();
 private slots  :
     void connectWithDevice();
 private:
