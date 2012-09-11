@@ -17,7 +17,7 @@
 #include <QTextCodec>
 #include <QProgressBar>
 
-#define MOUSEFILE "/dev/input/event5"
+#define MOUSEFILE "/dev/input/event13"
 using namespace std;
 
 

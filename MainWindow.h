@@ -59,7 +59,14 @@ class MainWindow : public QMainWindow{
         QLabel *moveAreaLabel;
         string *temp, *temp2;
         string *fakeList;
-        
+        QLabel *mousePosY;
+        QLabel *mousePosX;
+        int fd;
+        struct input_event ie;
+        Display *dpy;
+        Window root, child;
+        int rootX, rootY, winX, winY;
+        unsigned int mask;
 public:
     
     MainWindow(QWidget *parent = 0);
