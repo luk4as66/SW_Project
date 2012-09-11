@@ -17,6 +17,7 @@
 #include <QTextCodec>
 #include <QProgressBar>
 
+#define MOUSEFILE "/dev/input/event5"
 using namespace std;
 
 
@@ -32,6 +33,20 @@ MainWindow::MainWindow(QWidget *parent):QMainWindow(parent) {
     QProgressBar *progressbar = new QProgressBar(this);
     progressbar->setGeometry(10, (3*btnHeight)+180, 200, 20);
     progressbar->setRange(0,100);
+    
+     dpy = XOpenDisplay(NULL);
+  XQueryPointer(dpy,DefaultRootWindow(dpy),&root,&child,
+              &rootX,&rootY,&winX,&winY,&mask); 
+  fd = open(MOUSEFILE, O_RDONLY);
+  if(fd == -1) {
+    perror("opening device");
+    exit(EXIT_FAILURE);
+  }
+    
+    
+    
+    
+    
     
     SearchDevicesAction = new QAction(tr("&Search"), this);
     
@@ -66,13 +81,18 @@ MainWindow::MainWindow(QWidget *parent):QMainWindow(parent) {
     moveAreaLabel = new QLabel("Cursor movement area: ",this);
     moveAreaLabel -> setGeometry(180,95,150,15);
     
+    mousePosX = new QLabel("x=NaN ", this);
+    mousePosX -> setGeometry(180,200,50,15);
+    
+    mousePosY = new QLabel("y=NaN ", this);
+    mousePosY -> setGeometry(230,200,50,15);
     
     //to musi byc aktualizowana na bierzaco 
     tempDeegreLabel = new QLabel("-0 C",this);
     tempDeegreLabel -> setFont(font);
     tempDeegreLabel -> setGeometry(90,220,200,100);
     
-    
+    qApp -> installEventFilter(this);
     
     connect(SearchDevicesAction, SIGNAL(triggered()), this, SLOT(find()));
     connect(Exit, SIGNAL(triggered()), qApp, SLOT(quit()));
@@ -148,6 +168,51 @@ void MainWindow :: connectToDevice(){
     
     
 }
+/*
+ * ruch myszy po oknie aplikacji;
+ */
+bool MainWindow::eventFilter(QObject* obj, QEvent* event){
+    if(event->type() == QEvent::MouseMove){
+   // QMouseEvent *mouseEvent = static_cast<QMouseEvent*>(event);
+        QString xPos;
+    //    xPos = "x="+xPos.setNum(mouseEvent->pos().x());
+        QString yPos;
+    //    yPos = "y="+yPos.setNum(mouseEvent->pos().y());
+        
+
+ 
+
+ read(fd, &ie, sizeof(struct input_event));
+    if (ie.type == 2) {
+      if (ie.code == 0) { rootX += ie.value; }
+      else if (ie.code == 1) { rootY += ie.value; }
+     // printf("time%ld.%06ld\tx %d\ty %d\n", 
+     //    ie.time.tv_sec, ie.time.tv_usec, rootX, rootY);
+      
+    } else if (ie.type == 1) {
+      if (ie.code == 272 ) { 
+        printf("Mouse button ");
+        if (ie.value == 0)  
+          printf("released!!\n");
+        if (ie.value == 1)  
+          printf("pressed!!\n");
+    } else {
+        printf("time %ld.%06ld\ttype %d\tcode %d\tvalue %d\n",
+            ie.time.tv_sec, ie.time.tv_usec, ie.type, ie.code, ie.value);
+    }
+  }
+         xPos = "x="+xPos.setNum(rootX);
+        yPos = "x="+yPos.setNum(rootY);
+      mousePosX -> setText(xPos);
+        mousePosY -> setText(yPos);
+        
+    }
+    
+    return false;
+}
+
+
+
 MainWindow::~MainWindow() {
 }
 

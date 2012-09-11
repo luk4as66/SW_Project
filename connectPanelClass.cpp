@@ -49,8 +49,14 @@ connectPanelClass::connectPanelClass(string *list, QWidget *parent):QDialog(pare
  
 }
 
-void connectPanelClass :: connectWithDevice()
-{
+void connectPanelClass::connectWithDevice(){
+    
+    QListWidgetItem *curitem = lw->currentItem();
+    QString text = curitem->text();
+    
+    
+    
+    cout<<text.toStdString();
     struct sockaddr_rc addr = { 0 };
     int s, status;
     char dest[18] = "00:12:6F:25:06:10";
@@ -81,6 +87,10 @@ void connectPanelClass :: connectWithDevice()
     ::close(s);
     
 }
+string connectPanelClass::getDeviceName(){
+    return deviceName;
+}
+
 connectPanelClass::~connectPanelClass() {
     
 }

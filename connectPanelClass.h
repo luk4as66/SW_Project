@@ -25,14 +25,17 @@
 using namespace std;
 
 class connectPanelClass: public QDialog{
+     Q_OBJECT
 public:
     connectPanelClass(string *list,QWidget *parent=0);
+    string getDeviceName();
     virtual ~connectPanelClass();
-public  :
+private  slots:
     void connectWithDevice();
 private:
     QListWidget *lw;
     QPushButton *connectWith;
+    string deviceName;
 };
 
 #endif	/* CONNECTPANELCLASS_H */
