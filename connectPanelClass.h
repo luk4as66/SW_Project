@@ -27,12 +27,11 @@
 
 using namespace std;
 
-class connectPanelClass: public QDialog,   public QThread{
+class connectPanelClass: public QDialog{
     Q_OBJECT
 public:
     connectPanelClass(string *list,QWidget *parent=0);
     virtual ~connectPanelClass();
-    void run();
 private slots  :
     void connectWithDevice();
 private:

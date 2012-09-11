@@ -88,7 +88,7 @@ MainWindow::MainWindow(QWidget *parent):QMainWindow(parent) {
     fileMenu->addAction(ViewDevices);
     
     
-    fakeList = new string[search.sizeOfArrayNames()];
+    
     temp = new string [search.sizeOfArrayNames()];
     temp2 = new string [search.sizeOfArrayNames()];
     
@@ -116,6 +116,7 @@ void MainWindow :: discovered()
     if(search.sizeOfArrayNames()==0)
     {
       logText+"brak urzadzen";
+      cout<<"bla"<<endl;
     }
     else
     {
@@ -147,11 +148,12 @@ void MainWindow :: connectToDevice(){
    
         if(search.sizeOfArrayNames()==0)
         {
+            cout<<"bla"<<endl;
             logText+"brak urzadzen";
         }
         else
         {
-            
+         
          fakeList = search.returnArrayOfNames();
          connectPanel = new connectPanelClass(fakeList,this);
          connectPanel -> resize(300,200);
@@ -163,10 +165,6 @@ void MainWindow :: connectToDevice(){
     
 }
 MainWindow::~MainWindow() {
-    delete [] temp;
-    delete [] temp2;
-    delete [] fakeList;
     
-        
 }
 

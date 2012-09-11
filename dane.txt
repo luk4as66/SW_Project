@@ -1,0 +1,10 @@
+
+Nazwa urządzenia:
+pabl
+Adres urządzenia00:1F:3A:E0:6F:F8
+Nazwa urządzenia:
+Seri
+Adres urządzenia00:12:6F:25:06:10
+Nazwa urządzenia:
+[nieznany]
+Adres urządzenia00:21:08:DC:DE:DB

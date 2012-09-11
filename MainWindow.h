@@ -54,7 +54,6 @@ class MainWindow : public QMainWindow{
         string *temp, *temp2;
         string *fakeList;
         
-        
 public:
     
     MainWindow(QWidget *parent = 0);

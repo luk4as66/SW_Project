@@ -36,6 +36,7 @@ private:
     int i;
     string arrayOfDevices[20];
     string nameOfDevices[20];
+    
 public:
     bluetooth();
     ~bluetooth();
